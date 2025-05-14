@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Make a Difference</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --tertiary-color: #e74c3c;
+            --dark: #ffffff;
+            --light: #95a5a6;
+            --highlight: #f472b6;
+            --blue-light: #93c5fd;
+            --blue-medium: #3b82f6;
+            --blue-dark: #1d4ed8;
+            --pink-light: #fbcfe8;
+            --pink-medium: #ec4899;
+            --pink-dark: #be185d;
+            --text-color: #333333;
+            --text-light: #666666;
+            --bg-light: #f8f9fa;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+            --container-max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--blue-medium);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--blue-dark);
+        }
+
+        .container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: var(--dark);
+            padding: 20px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .logo span {
+            color: var(--tertiary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--tertiary-color);
+            left: 0;
+            bottom: -5px;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover:after,
+        nav ul li a.active:after {
+            width: 100%;
+        }
+
+        #menuToggle {
+            display: none;
+        }
+
+        /* Hero Section */
+        .about-hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--pink-dark) 100%);
+            color: var(--dark);
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .about-hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        /* Our Story Section */
+        .our-story {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--tertiary-color);
+            left: 25%;
+            bottom: -10px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .story-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .story-image {
+            flex: 1;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .story-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .story-image img:hover {
+            transform: scale(1.03);
+        }
+
+        .story-text {
+            flex: 1;
+        }
+
+        .story-text h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .story-text p {
+            margin-bottom: 20px;
+        }
+
+        /* Mission & Values */
+        .mission-values {
+            padding: 80px 0;
+            background-color: var(--primary-color);
+            color: var(--dark);
+        }
+
+        .mission-values .section-header h2 {
+            color: var(--dark);
+        }
+
+        .mission-values .section-header p {
+            color: var(--light);
+        }
+
+        .values-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .value-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .value-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--tertiary-color);
+        }
+
+        .value-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 80px 0;
+        }
+
+        .team-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-card {
+            background-color: var(--dark);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .team-card:hover .team-image img {
+            transform: scale(1.05);
+        }
+
+        .team-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .team-info h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .team-info p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--tertiary-color);
+        }
+
+        /* Impact Section */
+        .impact-section {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+
+        .impact-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            margin: 20px;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--tertiary-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 18px;
+            color: var(--text-light);
+        }
+
+        /* Partners Section */
+        .partners-section {
+            padding: 80px 0;
+            background-color: var(--dark);
+        }
+
+        .partners-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .partner-logo {
+            width: 160px;
+            height: 80px;
+            background-color: rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .partner-logo:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow);
+        }
+
+        .partner-logo img {
+            max-width: 120px;
+            max-height: 60px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .partner-logo:hover img {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+
+        /* Join Us Section */
+        .join-us {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--pink-dark) 0%, var(--blue-dark) 100%);
+            color: var(--dark);
+            text-align: center;
+        }
+
+        .join-us h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .join-us p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--tertiary-color);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background-color: #c0392b;
+            color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--dark);
+            color: var(--dark);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--dark);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light);
+            padding: 60px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: var(--dark);
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background: var(--tertiary-color);
+            left: 0;
+            bottom: 0;
+        }
+
+        .footer-col p {
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--light);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--tertiary-color);
+            padding-left: 5px;
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--tertiary-color);
+        }
+
+        .social-media {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-media a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            transition: var(--transition);
+        }
+
+        .social-media a:hover {
+            background-color: var(--tertiary-color);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 992px) {
+            .values-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .story-content {
+                flex-direction: column;
+            }
+            
+            .story-image, .story-text {
+                flex: initial;
+                width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                padding: 20px;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            #menuToggle {
+                display: block;
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+            
+            #menuToggle span {
+                display: block;
+                width: 30px;
+                height: 3px;
+                background-color: var(--dark);
+                margin: 5px 0;
+                transition: var(--transition);
+            }
+            
+            #menuToggle span.active:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            #menuToggle span.active:nth-child(2) {
+                opacity: 0;
+            }
+            
+            #menuToggle span.active:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+            
+            .values-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-hero h1 {
+                font-size: 36px;
+            }
+            
+            .about-hero p {
+                font-size: 16px;
+            }
+            
+            .section-header h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .stat-item {
+                min-width: 150px;
+            }
+            
+            .stat-number {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">Make a <span>Difference</span></a>
+            <button id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <ul id="mainMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li><a href="stories.html">Success Stories</a></li>
+                    <li><a href="volunteer.html">Volunteer</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="donate.html" class="btn btn-primary">Donate</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>About Make a Difference</h1>
+            <p>We are a passionate organization dedicated to creating meaningful change in our communities through innovative programs and compassionate support.</p>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="our-story">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Story</h2>
+                <p>How a simple idea transformed into a movement of hope and change.</p>
+            </div>
+            <div class="story-content">
+                <div class="story-image">
+                    <img src="/api/placeholder/600/400" alt="Our founding team working in the community">
+                </div>
+                <div class="story-text">
+                    <h3>A Simple Beginning</h3>
+                    <p>Make a Difference was born in 2010 when our founder, Sarah Johnson, witnessed the struggles of underserved communities in her hometown. What began as a small weekend food drive quickly blossomed into something much larger as more volunteers joined the cause.</p>
+                    <p>Throughout our journey, we've remained committed to our core belief: that small actions, when multiplied by compassionate people, can transform communities. From our humble beginnings with just 5 volunteers, we've grown to a network of over 1,000 changemakers across the country.</p>
+                    <p>Today, Make a Difference operates multiple programs focused on education, healthcare access, environmental sustainability, and community development. While we've grown substantially, our approach remains personal and community-centered, ensuring that every individual we work with feels valued and empowered.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Values -->
+    <section class="mission-values">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Mission & Values</h2>
+                <p>The principles that guide our work and inspire our community.</p>
+            </div>
+            <div class="values-container">
+                <div class="value-card">
+                    <div class="value-icon">❤️</div>
+                    <h3>Compassion</h3>
+                    <p>We approach every interaction with empathy and understanding, recognizing the dignity in every person we serve.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Collaboration</h3>
+                    <p>We believe in the power of partnerships and work closely with communities to create sustainable solutions.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">💡</div>
+                    <h3>Innovation</h3>
+                    <p>We continuously seek creative approaches to address complex social challenges effectively.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">⚖️</div>
+                    <h3>Equity</h3>
+                    <p>We are committed to creating fair opportunities and removing barriers to success for all people.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🔄</div>
+                    <h3>Sustainability</h3>
+                    <p>We develop programs with long-term impact in mind, supporting communities to thrive independently.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🔍</div>
+                    <h3>Transparency</h3>
+                    <p>We operate with honesty and openness in all aspects of our work and organizational practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Leadership Team</h2>
+                <p>Meet the dedicated individuals guiding our organization's mission and vision.</p>
+            </div>
+            <div class="team-container">
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="images/#" alt="Sarah Johnson">
+                    </div>
+                    <div class="team-info">
+                        <h3>Nombus Simelane</h3>
+                        <p>Founder & Executive Director</p>
+                        <div class="social-links">
+                            <a href="#" aria-label="LinkedIn">in</a>
+                            <a href="#" aria-label="Twitter">𝕏</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="images/#" alt="Michael Chen">
+                    </div>
+                    <div class="team-info">
+                        <h3>Pedro Muttenda</h3>
+                        <p>Director of Programs</p>
+                        <div class="social-links">
+                            <a href="#" aria-label="LinkedIn">in</a>
+                            <a href="#" aria-label="Twitter">𝕏</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="/api/placeholder/300/300" alt="Amara Williams">
+                    </div>
+                    <div class="team-info">
+                        <h3>Kgaugelo Shai</h3>
+                        <p>Community Outreach Director</p>
+                        <div class="social-links">
+                            <a href="#" aria-label="LinkedIn">in</a>
+                            <a href="#" aria-label="Twitter">𝕏</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="/api/placeholder/300/300" alt="David Patel">
+                    </div>
+                    <div class="team-info">
+                        <h3>Mpho Lemao</h3>
+                        <p>Director of Operations</p>
+                        <div class="social-links">
+                            <a href="#" aria-label="LinkedIn">in</a>
+                            <a href="#" aria-label="Twitter">𝕏</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Impact</h2>
+                <p>The numbers behind our commitment to creating lasting change.</p>
+            </div>
+            <div class="impact-stats">
+                <div class="stat-item">
+                    <div class="stat-number">23,500</div>
+                    <div class="stat-label">People Helped</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">45</div>
+                    <div class="stat-label">Communities Served</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">120</div>
+                    <div class="stat-label">Active Programs</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1,000</div>
+                    <div class="stat-label">Volunteers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Partners</h2>
+                <p>Collaborating with organizations who share our vision for a better future.</p>
+            </div>
+            <div class="partners-container">
+                <div class="partner-logo">
+                    <img src="images/#" alt="Partner 1">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/#" alt="Partner 2">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/#" alt="Partner 3">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/#" alt="Partner 4">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/#" alt="Partner 5">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/#" alt="Partner 6">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Us Section -->
+    <section class="join-us">
+        <div class="container">
+            <h2>Join Our Mission</h2>
+            <p>Together, we can create the change we wish to see in the world. Whether through volunteering, donating, or spreading the word, your support matters.</p>
+            <div class="cta-buttons">
+                <a href="donate.html" class="btn btn-primary">Make a Donation</a>
+                <a href="volunteer.html" class="btn btn-secondary">Become a Volunteer</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Make a Difference</h3>
+                    <p>A nonprofit organization dedicated to empowering communities and creating sustainable change through innovative programs and compassionate support.</p>
+                    <div class="social-media">
+                        <a href="#" aria-label="Facebook">f</a>
+                        <a href="#" aria-label="Twitter">𝕏</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="LinkedIn">in</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Our Programs</a></li>
+                        <li><a href="stories.html">Success Stories</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Programs</h3>
+                    <ul class="footer-links">
+                        <li><a href="programs.html#education">Education Support</a></li>
+                        <li><a href="programs.html#health">Health Access</a></li>
+                        <li><a href="programs.html#environment">Environmental Initiatives</a></li>
+                        <li><a href="programs.html#youth">Youth Empowerment</a></li>
+                        <li><a href="programs.html#community">Community Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i>📍</i> 123 Hope Street, Johannesburg, Gauteng</li>
+                        <li><i>📞</i> (87) 123-4567</li>
+                        <li><i>✉️</i> info@makeadifference.org</li>
+                        <li><i>🕒</i> Mon-Fri: 9:00 AM - 5:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Binary Wizardz. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
